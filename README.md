@@ -1,10 +1,33 @@
 # Kinebot LaTeX Report Template
 
-LaTeX template for Kinebot company reports.
+LaTeX template for Kinebot company reports, formatted according to **ABNT** (Brazilian standards).
+
+## ABNT Formatting (NBR 14724)
+
+| Setting | Value | ABNT Requirement |
+|---|---|---|
+| Paper | A4 | A4 |
+| Top margin | 3cm | 3cm |
+| Bottom margin | 3cm* | 2cm |
+| Left margin | 3cm | 3cm |
+| Right margin | 2cm | 2cm |
+| Font | Arial (Helvetica) 12pt | Arial or Times New Roman 12pt |
+| Line spacing | 1.5 | 1.5 |
+| Paragraph indent | 1.25cm | 1.25cm |
+| First paragraph | Indented | Indented |
+| Sections | Bold uppercase | Bold uppercase |
+| Subsections | Bold | Bold |
+| Subsubsections | Bold italic | Bold italic |
+| Language | pt-BR | Portuguese |
+| Page numbers | Top right, Arabic | Top right, starting from first content page |
+
+> *Bottom margin is 3cm instead of the standard 2cm to accommodate the footer banner.
+
+### Footer Banner
+
+The company footer banner appears **only on content pages** (after the table of contents). The cover page and table of contents have no footer.
 
 ## Preview
-
-The company footer banner appears on every page of the report, as shown below.
 
 ### Cover Page
 
@@ -18,7 +41,7 @@ The company footer banner appears on every page of the report, as shown below.
 
 ![Content](images/content.png)
 
-> **Note:** The table of contents and content screenshots are cropped — the footer banner is present at the bottom of every page, as seen in the cover page screenshot.
+> **Note:** The screenshots above are from a previous version. The current template has black text on the cover page, no footer on the cover/ToC, and ABNT-compliant formatting.
 
 ## Prerequisites
 
@@ -28,7 +51,7 @@ A LaTeX distribution installed:
 - **Linux**: TeX Live (`sudo apt install texlive-full` or equivalent)
 - **Windows**: [MikTeX](https://miktex.org/)
 
-All packages used (`fancyhdr`, `geometry`, `graphicx`, `helvet`, `hyperref`, `xcolor`, `babel`) are included in standard distributions.
+All packages used (`fancyhdr`, `geometry`, `graphicx`, `helvet`, `hyperref`, `xcolor`, `babel`, `setspace`, `titlesec`, `indentfirst`) are included in standard distributions.
 
 ## Project Structure
 
@@ -74,6 +97,7 @@ latexmk -c
 \reportauthor{Author Name}
 \reportdate{\today}
 \reportref{v1.0}
+\reportcity{Curitiba}
 ```
 
 3. Write your content in sections:
@@ -97,22 +121,27 @@ More details.
 | `\reportauthor{...}` | Report author(s) |
 | `\reportdate{...}` | Date (default: `\today`) |
 | `\reportref{...}` | Document version |
+| `\reportcity{...}` | City (default: `Curitiba`) |
 | `\makecover` | Generates the cover page |
 
 ## Customization
 
 ### Margins
 
-Margins are defined in `kinebot.sty`. If the footer banner height changes, adjust the bottom margin and `\footskip` proportionally:
+Margins follow ABNT standards and are defined in `kinebot.sty`:
 
 ```latex
-% In kinebot.sty
+% In kinebot.sty (ABNT NBR 14724)
 \RequirePackage[
-  ...
-  bottom=3.0cm  % Adjust based on banner height
+  a4paper,
+  top=3cm,
+  left=3cm,
+  right=2cm,
+  bottom=3cm
 ]{geometry}
-\setlength{\footskip}{1.8cm}  % Adjust together with bottom
 ```
+
+If the footer banner height changes, adjust `bottom` and `\footskip` proportionally.
 
 ### Including Figures
 

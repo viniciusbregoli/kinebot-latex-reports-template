@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{kinebot}[2026/03/23 Kinebot Report Template]
+\ProvidesPackage{kinebot}[2026/03/23 Kinebot Report Template - ABNT]
 
 % =============================================================================
 % Packages
@@ -9,20 +9,37 @@
 \RequirePackage[brazilian]{babel}
 \RequirePackage[
   a4paper,
-  top=2.5cm,
-  left=2.5cm,
-  right=2.5cm,
-  bottom=3.0cm
+  top=3cm,
+  left=3cm,
+  right=2cm,
+  bottom=3cm
 ]{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage{graphicx}
 \RequirePackage{xcolor}
 \RequirePackage{hyperref}
+\RequirePackage{bookmark}
+\RequirePackage{setspace}
+\RequirePackage{titlesec}
+\RequirePackage{indentfirst}
 
 % =============================================================================
 % Font: Arial (Helvetica substitute), 12pt set at \documentclass level
 % =============================================================================
 \renewcommand{\familydefault}{\sfdefault}
+
+% =============================================================================
+% ABNT: 1.5 line spacing, paragraph indent 1.25cm
+% =============================================================================
+\onehalfspacing
+\setlength{\parindent}{1.25cm}
+
+% =============================================================================
+% ABNT: Section formatting (bold uppercase for sections, bold for subsections)
+% =============================================================================
+\titleformat{\section}{\normalfont\bfseries\MakeUppercase}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\itshape}{\thesubsubsection}{0.5em}{}
 
 % =============================================================================
 % Colors
@@ -35,7 +52,7 @@
 % =============================================================================
 \hypersetup{
   colorlinks=true,
-  linkcolor=kinebot-blue,
+  linkcolor=black,
   urlcolor=kinebot-blue,
   citecolor=kinebot-blue,
   pdfcreator={LaTeX via Kinebot Template}
@@ -49,16 +66,20 @@
 \newcommand{\@reportauthor}{Autor}
 \newcommand{\@reportdate}{\today}
 \newcommand{\@reportref}{}
+\newcommand{\@reportcity}{Curitiba}
 
 \newcommand{\reporttitle}[1]{\renewcommand{\@reporttitle}{#1}}
 \newcommand{\reportsubtitle}[1]{\renewcommand{\@reportsubtitle}{#1}}
 \newcommand{\reportauthor}[1]{\renewcommand{\@reportauthor}{#1}}
 \newcommand{\reportdate}[1]{\renewcommand{\@reportdate}{#1}}
 \newcommand{\reportref}[1]{\renewcommand{\@reportref}{#1}}
+\newcommand{\reportcity}[1]{\renewcommand{\@reportcity}{#1}}
 
 % =============================================================================
-% Footer with banner image
+% Footer with banner image (only on content pages)
 % =============================================================================
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}
 \setlength{\footskip}{1.8cm}
 
 % Helper command for the footer content
@@ -69,62 +90,66 @@
   \end{minipage}%
 }
 
-% Fancy page style (normal pages)
-\pagestyle{fancy}
+% Fancy page style (content pages — with footer and page number)
+% Default is plain (no footer); switch to fancy after pre-textual elements
+\pagestyle{plain}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \fancyhead[R]{\thepage}
 \fancyfoot[L]{\@kinebotfooter}
 
-% Plain page style (ToC, first pages of sections, etc.)
+% Plain page style (ToC pages — no footer, no page number)
 \fancypagestyle{plain}{%
   \fancyhf{}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
-  \fancyfoot[L]{\@kinebotfooter}
+}
+
+% Empty page style (cover page)
+\fancypagestyle{empty}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
 }
 
 % =============================================================================
-% Cover page
+% Cover page (ABNT style)
 % =============================================================================
 \newcommand{\makecover}{%
   \begin{titlepage}
     \centering
-    \vspace*{3cm}
+    \singlespacing
+
+    % Company name / institution
+    {\large\bfseries KINEBOT \par}
+    \vspace{0.5cm}
+
+    % Author
+    {\large \@reportauthor \par}
+
+    \vfill
 
     % Title
-    {\Huge\bfseries\color{kinebot-blue} \@reporttitle \par}
+    {\Huge\bfseries \@reporttitle \par}
     \vspace{0.8cm}
 
     % Subtitle
     \ifx\@reportsubtitle\empty\else
-      {\Large\color{kinebot-gray} \@reportsubtitle \par}
+      {\Large \@reportsubtitle \par}
+    \fi
+
+    % Reference
+    \ifx\@reportref\empty\else
+      \vspace{0.3cm}
+      {\normalsize \@reportref \par}
     \fi
 
     \vfill
 
-    % Author
-    {\large \@reportauthor \par}
+    % City and date
+    {\large \@reportcity \par}
     \vspace{0.3cm}
-
-    % Date
     {\large \@reportdate \par}
-    \vspace{0.3cm}
-
-    % Reference
-    \ifx\@reportref\empty\else
-      {\normalsize\color{kinebot-gray} \@reportref \par}
-    \fi
-
-    \vspace{2cm}
-
-    % Footer banner at bottom of cover
-    \noindent
-    \begin{minipage}{\textwidth}
-      \raggedright
-      \rule{\textwidth}{0.4pt}\vspace{4pt}\par
-      \includegraphics[width=0.75\textwidth]{images/footer_banner}%
-    \end{minipage}
   \end{titlepage}
 }

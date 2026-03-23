@@ -9,16 +9,23 @@
 \reportauthor{Nome do Autor}
 \reportdate{\today}
 \reportref{v1.0}
+\reportcity{Curitiba}
 
 % =============================================================================
 % Documento
 % =============================================================================
 \begin{document}
 
+% --- Elementos pre-textuais (sem rodape, sem numeracao) ---
+\pagenumbering{gobble}
 \makecover
 
 \tableofcontents
-\newpage
+\cleardoublepage
+
+% --- Elementos textuais (com rodape e numeracao) ---
+\pagenumbering{arabic}
+\pagestyle{fancy}
 
 \section{Introducao}
 
