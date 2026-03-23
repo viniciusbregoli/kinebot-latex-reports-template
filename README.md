@@ -8,8 +8,8 @@ LaTeX template for Kinebot company reports, formatted according to **ABNT** (Bra
 |---|---|---|
 | Paper | A4 | A4 |
 | Top margin | 3cm | 3cm |
-| Bottom margin | 3cm* | 2cm |
-| Left margin | 5cm | 3cm |
+| Bottom margin | 5cm* | 2cm |
+| Left margin | 3cm | 3cm |
 | Right margin | 2cm | 2cm |
 | Font | Arial (Helvetica) 12pt | Arial or Times New Roman 12pt |
 | Line spacing | 1.5 | 1.5 |
