@@ -41,8 +41,6 @@ The company footer banner appears **only on content pages** (after the table of 
 
 ![Content](images/content.png)
 
-> **Note:** The screenshots above are from a previous version. The current template has black text on the cover page, no footer on the cover/ToC, and ABNT-compliant formatting.
-
 ## Prerequisites
 
 A LaTeX distribution installed:
