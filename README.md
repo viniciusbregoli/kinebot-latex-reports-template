@@ -2,6 +2,24 @@
 
 LaTeX template for Kinebot company reports.
 
+## Preview
+
+The company footer banner appears on every page of the report, as shown below.
+
+### Cover Page
+
+![Cover Page](images/cover_page.png)
+
+### Table of Contents
+
+![Table of Contents](images/sumario.png)
+
+### Content
+
+![Content](images/content.png)
+
+> **Note:** The table of contents and content screenshots are cropped — the footer banner is present at the bottom of every page, as seen in the cover page screenshot.
+
 ## Prerequisites
 
 A LaTeX distribution installed:
