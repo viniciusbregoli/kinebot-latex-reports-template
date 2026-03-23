@@ -9,7 +9,7 @@ LaTeX template for Kinebot company reports, formatted according to **ABNT** (Bra
 | Paper | A4 | A4 |
 | Top margin | 3cm | 3cm |
 | Bottom margin | 3cm* | 2cm |
-| Left margin | 3cm | 3cm |
+| Left margin | 5cm | 3cm |
 | Right margin | 2cm | 2cm |
 | Font | Arial (Helvetica) 12pt | Arial or Times New Roman 12pt |
 | Line spacing | 1.5 | 1.5 |
@@ -21,7 +21,7 @@ LaTeX template for Kinebot company reports, formatted according to **ABNT** (Bra
 | Language | pt-BR | Portuguese |
 | Page numbers | Top right, Arabic | Top right, starting from first content page |
 
-> *Bottom margin is 3cm instead of the standard 2cm to accommodate the footer banner.
+> *Bottom margin is 5cm instead of the standard 2cm to accommodate the footer banner.
 
 ### Footer Banner
 
